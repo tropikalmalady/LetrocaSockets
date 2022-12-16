@@ -19,6 +19,9 @@ def play():
 
     word = input('\nDigite sua tentativa: ')
 
+    while not word:
+        word = input('\nDigite sua tentativa: ')
+
     s.send(str.encode(word))
 
     result1 = int(s.recv(1024).decode())
@@ -80,6 +83,7 @@ while True:
         s.send(str.encode('resetrank'))
         s.recv(1024).decode()
         print('\n Seu ranking foi resetado!')
+        s.close()
         break
     elif (opt == '4'):
         s.close()
